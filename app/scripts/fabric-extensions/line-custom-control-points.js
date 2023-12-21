@@ -7,6 +7,23 @@ function lineCustomControlPoints(canvas) {
   // Make sure that listeners aren't added multiple times.
   if (canvas.lineCustomControlPointsEnabled) return;
 
+  canvas.on("selection:updated", function(e){
+    if(isLine(e.target)){
+      if (selectedObject && isLine(selectedObject)) {
+        lineDeselected.call(selectedObject);
+      }
+      selectedObject = null;
+      var newTarget = e.target;
+
+      if (!isControlPoint(newTarget, selectedObject)) {
+        selectedObject = newTarget;
+        if (isLine(newTarget) && !newTarget.annotationId) {
+          lineSelected.call(newTarget);
+        }
+      }
+    }
+  })
+
   canvas.on("object:selected", function (e) {
     var newTarget = e.target;
     if (selectedObject && isLine(selectedObject) && !isControlPoint(newTarget, selectedObject)) {

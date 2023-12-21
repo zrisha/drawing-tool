@@ -16,6 +16,13 @@ var BASIC_SELECTION_PROPERTIES = {
 function SelectionTool(name, drawTool) {
   Tool.call(this, name, drawTool);
 
+  this.canvas.on("object:added", function(e){
+    if(!e.target.isControlPoint){
+      e.target.hasControls = true;
+      e.target.hasBorders = true;
+    }
+  });
+
   this.canvas.on("object:selected", function (opt) {
     opt.target.set(BASIC_SELECTION_PROPERTIES);
     this.canvas.renderAll();
