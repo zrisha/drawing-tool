@@ -41,17 +41,17 @@ var duringResize = {
   arrow: function (s) {
     this.line(s);
   },
-  path: function (s) {
-    var offsetX = s.pathOffset.x;
-    var offsetY = s.pathOffset.y;
-    for (var i = 0; i < s.path.length; i++) {
-      s.path[i][1] = (s.path[i][1] - offsetX) * s.scaleX + offsetX;
-      s.path[i][2] = (s.path[i][2] - offsetY) * s.scaleY + offsetY;
-      s.path[i][3] = (s.path[i][3] - offsetX) * s.scaleX + offsetX;
-      s.path[i][4] = (s.path[i][4] - offsetY) * s.scaleY + offsetY;
-    }
-    basicWidthHeightTransform(s);
-  }
+  // path: function (s) {
+  //   var offsetX = s.pathOffset.x;
+  //   var offsetY = s.pathOffset.y;
+  //   for (var i = 0; i < s.path.length; i++) {
+  //     s.path[i][1] = (s.path[i][1] - offsetX) * s.scaleX + offsetX;
+  //     s.path[i][2] = (s.path[i][2] - offsetY) * s.scaleY + offsetY;
+  //     s.path[i][3] = (s.path[i][3] - offsetX) * s.scaleX + offsetX;
+  //     s.path[i][4] = (s.path[i][4] - offsetY) * s.scaleY + offsetY;
+  //   }
+  //   basicWidthHeightTransform(s);
+  // }
 };
 
 // These handlers will be called just once, after resizing is complete.
