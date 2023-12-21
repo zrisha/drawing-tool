@@ -121,6 +121,13 @@ function DrawingTool(selector, options, settings) {
       options.onDrawingChanged();
     })
   }
+
+  // Listen for drawing changes if required
+  if (options.onAnyEvent) {
+    this._dispatch.onAny((value) => {
+      options.onAnyEvent(this._dispatch.event, value);
+    })
+  }
 }
 
 DrawingTool.prototype.ADDITIONAL_PROPS_TO_SERIALIZE = ADDITIONAL_PROPS_TO_SERIALIZE;
